@@ -52,31 +52,33 @@ async function main() {
           message: "What to do?",
           choices: accountOption.option == accountChoice[0] ? ownerChoice : donatorChoice,
         },
-      ]);
+    ]);
     
-      switch (actionOption.option) {
+    switch (actionOption.option) {
         case ownerChoice[0]:
-          const rl = readline.createInterface({ input, output });
-          const money = await rl.question("How much ETH to donate: ");
-          const options = {value: ethers.parseEther(money)}
-          await storageContract.donate(options);
-          break;
+            const rl = readline.createInterface({ input, output });
+            const money = await rl.question("How much ETH to donate: ");
+            const options = {value: ethers.parseEther(money)}
+            await storageContract.donate(options);
+            break;
         case ownerChoice[1]:
-          const donators = await storageContract.getTopDonators();
-          console.log(donators);
-          break;
+            const donators = await storageContract.getTopDonators();
+            console.log(donators);
+            break;
         case ownerChoice[2]:
             await storageContract.random();
+            break;
         case ownerChoice[3]:
             const random = await storageContract.checkRandom();
             console.log(random);
+            break;
         case ownerChoice[4]:
-          await storageContract.withdraw();
-          break;
+            await storageContract.withdraw();
+            break;
         default:
             console.log('Error!');
             break;
-      }
+    }
   }
 
 }
