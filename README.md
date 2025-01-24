@@ -1,7 +1,9 @@
-```npm install```
+`npm install`
 
-```npx hardhat node```
+`npx hardhat node`
 
-```npm run deploy```
+`npm run deploy`
 
-```npm run start```
+Copy output address to `index.js` `contractAddr`
+
+`npm run start`
