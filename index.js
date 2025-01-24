@@ -9,11 +9,11 @@ import StorageArtifact from "./artifacts/contracts/contract.sol/Storage.json"  w
 
 async function main() {
   const [owner, testacc1, testacc2] = await ethers.getSigners();
-  const contract_addr = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+  const contract_addr = "0x0165878A594ca255338adfa4d48449f69242Eb8F";
 
   const accountChoice = ["Owner", "acc1", "acc2"];
-  const ownerChoice = ["Donate money", "Check top donators", "Withdraw money"];
-  const donatorChoice = ["Donate money", "Check top donators"];
+  const ownerChoice = ["Donate money", "Check top donators", "Set Random", "Check Random", "Withdraw money"];
+  const donatorChoice = ["Donate money", "Check top donators", "Set Random", "Check Random"];
 
   const accountOption = await inquirer.prompt([
     {
@@ -24,7 +24,7 @@ async function main() {
     },
   ]);
 
-  console.log(accountOption.option, accountChoice[0]);
+  console.log("Selected user: ", accountOption.option);
 
   const storageContract = new ethers.Contract(
     contract_addr,
@@ -42,35 +42,43 @@ async function main() {
   ? await testacc1.provider.getBalance(testacc1.address)
   : await testacc2.provider.getBalance(testacc2.address)
 
-  console.log(balance)
+  console.log("Account balance: ", balance)
 
-  const actionOption = await inquirer.prompt([
-    {
-      type: "list",
-      name: "option",
-      message: "What to do?",
-      choices: accountOption.option == accountChoice[0] ? ownerChoice : donatorChoice,
-    },
-  ]);
-
-  switch (actionOption.option) {
-    case ownerChoice[0]:
-      const rl = readline.createInterface({ input, output });
-      const money = await rl.question("How much ETH to donate: ");
-      const options = {value: ethers.parseEther(money)}
-      await storageContract.donate(options);
-      break;
-    case ownerChoice[1]:
-      const donators = await storageContract.getTopDonators();
-      console.log(donators);
-      break;
-    case ownerChoice[2]:
-      await storageContract.withdraw();
-      break;
-    default:
-        console.log('Error!');
-        break;
+  while(true){
+    const actionOption = await inquirer.prompt([
+        {
+          type: "list",
+          name: "option",
+          message: "What to do?",
+          choices: accountOption.option == accountChoice[0] ? ownerChoice : donatorChoice,
+        },
+      ]);
+    
+      switch (actionOption.option) {
+        case ownerChoice[0]:
+          const rl = readline.createInterface({ input, output });
+          const money = await rl.question("How much ETH to donate: ");
+          const options = {value: ethers.parseEther(money)}
+          await storageContract.donate(options);
+          break;
+        case ownerChoice[1]:
+          const donators = await storageContract.getTopDonators();
+          console.log(donators);
+          break;
+        case ownerChoice[2]:
+            await storageContract.random();
+        case ownerChoice[3]:
+            const random = await storageContract.checkRandom();
+            console.log(random);
+        case ownerChoice[4]:
+          await storageContract.withdraw();
+          break;
+        default:
+            console.log('Error!');
+            break;
+      }
   }
+
 }
 
 main()

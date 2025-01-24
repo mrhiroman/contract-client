@@ -81,4 +81,8 @@ contract Storage {
     function random() public {
         lastRand = uint256(keccak256(abi.encodePacked("secret", block.timestamp)));
     }
+
+    function checkRandom() public view returns (uint256){
+        return lastRand;
+    }
 }

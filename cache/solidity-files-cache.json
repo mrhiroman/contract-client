@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\h1roman\\Desktop\\contract-client\\contracts\\contract.sol": {
-      "lastModificationDate": 1737643617161,
-      "contentHash": "e4caeddc354187bc235e21ca9a6bc78b",
+      "lastModificationDate": 1737716409405,
+      "contentHash": "7217fb176d64e25874edf786bfa7d963",
       "sourceName": "contracts/contract.sol",
       "solcConfig": {
         "version": "0.8.28",
@@ -79,10 +79,10 @@
         "Strings"
       ]
     },
-    "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\math\\Math.sol": {
-      "lastModificationDate": 1737662768617,
-      "contentHash": "2b2665ae9bdb1af440658741a77fe213",
-      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
+    "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeCast.sol": {
+      "lastModificationDate": 1737662768677,
+      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
       "solcConfig": {
         "version": "0.8.28",
         "settings": {
@@ -107,15 +107,12 @@
           }
         }
       },
-      "imports": [
-        "../Panic.sol",
-        "./SafeCast.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
         "^0.8.20"
       ],
       "artifacts": [
-        "Math"
+        "SafeCast"
       ]
     },
     "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SignedMath.sol": {
@@ -156,10 +153,10 @@
         "SignedMath"
       ]
     },
-    "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeCast.sol": {
-      "lastModificationDate": 1737662768677,
-      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
-      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+    "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\math\\Math.sol": {
+      "lastModificationDate": 1737662768617,
+      "contentHash": "2b2665ae9bdb1af440658741a77fe213",
+      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
       "solcConfig": {
         "version": "0.8.28",
         "settings": {
@@ -184,12 +181,15 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "../Panic.sol",
+        "./SafeCast.sol"
+      ],
       "versionPragmas": [
         "^0.8.20"
       ],
       "artifacts": [
-        "SafeCast"
+        "Math"
       ]
     },
     "C:\\Users\\h1roman\\Desktop\\contract-client\\node_modules\\@openzeppelin\\contracts\\utils\\Panic.sol": {
